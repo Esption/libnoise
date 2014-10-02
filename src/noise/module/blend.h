@@ -59,8 +59,8 @@ namespace noise
     ///   Positive values weigh the blend towards the output value from the
     ///   source module with an index value of 1.
     ///
-    /// An application can pass the control module to the SetControlModule()
-    /// method instead of the SetSourceModule() method.  This may make the
+    /// An application can pass the control module to the setControlModule()
+    /// method instead of the setsourceModule() method.  This may make the
     /// application code easier to read.
     ///
     /// This noise module uses linear interpolation to perform the blending
@@ -80,7 +80,7 @@ namespace noise
         /// @returns A reference to the control module.
         ///
         /// @pre A control module has been added to this noise module via a
-        /// call to SetSourceModule() or SetControlModule().
+        /// call to setsourceModule() or setControlModule().
         ///
         /// @throw noise::ExceptionNoModule See the preconditions for more
         /// information.
@@ -90,7 +90,7 @@ namespace noise
         /// value from the source module with an index value of 0.  Positive
         /// values weigh the blend towards the output value from the source
         /// module with an index value of 1.
-        const Module& GetControlModule () const
+        const Module& getControlModule () const
         {
           if (m_pSourceModule == NULL || m_pSourceModule[2] == NULL) {
             throw noise::ExceptionNoModule ();
@@ -98,12 +98,12 @@ namespace noise
           return *(m_pSourceModule[2]);
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 3;
         }
 
-	      virtual double GetValue (double x, double y, double z) const;
+	      virtual double getValue (double x, double y, double z) const;
 
         /// Sets the control module.
         ///
@@ -117,13 +117,13 @@ namespace noise
         ///
         /// This method assigns the control module an index value of 2.
         /// Passing the control module to this method produces the same
-        /// results as passing the control module to the SetSourceModule()
+        /// results as passing the control module to the setsourceModule()
         /// method while assigning that noise module an index value of 2.
         ///
         /// This control module must exist throughout the lifetime of this
         /// noise module unless another control module replaces that control
         /// module.
-        void SetControlModule (const Module& controlModule)
+        void setControlModule (const Module& controlModule)
         {
           assert (m_pSourceModule != NULL);
           m_pSourceModule[2] = &controlModule;

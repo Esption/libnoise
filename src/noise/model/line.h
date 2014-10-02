@@ -48,7 +48,7 @@ namespace noise
     ///  - disaffected college students
     ///
     /// To generate an output value, pass an input value between 0.0 and 1.0
-    /// to the GetValue() method.  0.0 represents the start position of the
+    /// to the getValue() method.  0.0 represents the start position of the
     /// line segment and 1.0 represents the end position of the line segment.
     class Line
     {
@@ -108,7 +108,7 @@ namespace noise
         /// If the value is not to be attenuated, @a p can safely range
         /// outside the 0.0 to 1.0 range; the output value will be
         /// extrapolated along the line that this segment is part of.
-        double GetValue (double p) const;
+        double getValue (double p) const;
 
         /// Sets a flag indicating that the output value is to be attenuated
         /// (moved toward 0.0) as the ends of the line segment are approached.

@@ -73,17 +73,17 @@ namespace noise
         /// to +1.0, this noise module first normalizes this output value (the
         /// range becomes 0.0 to 1.0), maps that value onto an exponential
         /// curve, then rescales that value back to the original range.
-        double GetExponent () const
+        double getExponent () const
         {
           return m_exponent;
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 1;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Sets the exponent value to apply to the output value from the
         /// source module.
@@ -94,7 +94,7 @@ namespace noise
         /// to +1.0, this noise module first normalizes this output value (the
         /// range becomes 0.0 to 1.0), maps that value onto an exponential
         /// curve, then rescales that value back to the original range.
-        void SetExponent (double exponent)
+        void setExponent (double exponent)
         {
           m_exponent = exponent;
         }

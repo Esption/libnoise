@@ -67,12 +67,12 @@ namespace noise
     ///
     /// @image html curve.png
     ///
-    /// To add the control points to this curve, call the AddControlPoint()
+    /// To add the control points to this curve, call the addControlPoint()
     /// method.
     ///
     /// Since this curve is a cubic spline, an application must add a minimum
     /// of four control points to the curve.  If this is not done, the
-    /// GetValue() method fails.  Each control point can have any input and
+    /// getValue() method fails.  Each control point can have any input and
     /// output value, although no two control points can have the same input
     /// value.  There is no limit to the number of control points that can be
     /// added to the curve.  
@@ -100,24 +100,24 @@ namespace noise
         /// specified; see the preconditions for more information.
         ///
         /// It does not matter which order these points are added.
-        void AddControlPoint (double inputValue, double outputValue);
+        void addControlPoint (double inputValue, double outputValue);
 
         /// Deletes all the control points on the curve.
         ///
         /// @post All points on the curve are deleted.
-        void ClearAllControlPoints ();
+        void clearAllControlPoints ();
 
         /// Returns a pointer to the array of control points on the curve.
         ///
         /// @returns A pointer to the array of control points.
         ///
-        /// Before calling this method, call GetControlPointCount() to
+        /// Before calling this method, call getControlPointCount() to
         /// determine the number of control points in this array.
         ///
         /// It is recommended that an application does not store this pointer
         /// for later use since the pointer to the array may change if the
         /// application calls another method of this object.
-        const ControlPoint* GetControlPointArray () const
+        const ControlPoint* getControlPointArray () const
         {
           return m_pControlPoints;
         }
@@ -125,17 +125,17 @@ namespace noise
         /// Returns the number of control points on the curve.
         ///
         /// @returns The number of control points on the curve.
-        int GetControlPointCount () const
+        int getControlPointCount () const
         {
           return m_controlPointCount;
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 1;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
       protected:
 

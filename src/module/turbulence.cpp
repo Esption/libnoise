@@ -25,27 +25,27 @@
 using namespace noise::module;
 
 Turbulence::Turbulence ():
-  Module (GetSourceModuleCount ()),
+  Module (getSourceModuleCount ()),
   m_power (DEFAULT_TURBULENCE_POWER)
 {
-  SetSeed (DEFAULT_TURBULENCE_SEED);
-  SetFrequency (DEFAULT_TURBULENCE_FREQUENCY);
-  SetRoughness (DEFAULT_TURBULENCE_ROUGHNESS);
+  setSeed (DEFAULT_TURBULENCE_SEED);
+  setFrequency (DEFAULT_TURBULENCE_FREQUENCY);
+  setRoughness (DEFAULT_TURBULENCE_ROUGHNESS);
 }
 
-double Turbulence::GetFrequency () const
+double Turbulence::getFrequency () const
 {
   // Since each noise::module::Perlin noise module has the same frequency, it
   // does not matter which module we use to retrieve the frequency.
-  return m_xDistortModule.GetFrequency ();
+  return m_xDistortModule.getFrequency ();
 }
 
-int Turbulence::GetSeed () const
+int Turbulence::getSeed () const
 {
-  return m_xDistortModule.GetSeed ();
+  return m_xDistortModule.getSeed ();
 }
 
-double Turbulence::GetValue (double x, double y, double z) const
+double Turbulence::getValue (double x, double y, double z) const
 {
   assert (m_pSourceModule[0] != NULL);
 
@@ -68,24 +68,24 @@ double Turbulence::GetValue (double x, double y, double z) const
   x2 = x + (53820.0 / 65536.0);
   y2 = y + (11213.0 / 65536.0);
   z2 = z + (44845.0 / 65536.0);
-  double xDistort = x + (m_xDistortModule.GetValue (x0, y0, z0)
+  double xDistort = x + (m_xDistortModule.getValue (x0, y0, z0)
     * m_power);
-  double yDistort = y + (m_yDistortModule.GetValue (x1, y1, z1)
+  double yDistort = y + (m_yDistortModule.getValue (x1, y1, z1)
     * m_power);
-  double zDistort = z + (m_zDistortModule.GetValue (x2, y2, z2)
+  double zDistort = z + (m_zDistortModule.getValue (x2, y2, z2)
     * m_power);
 
   // Retrieve the output value at the offsetted input value instead of the
   // original input value.
-  return m_pSourceModule[0]->GetValue (xDistort, yDistort, zDistort);
+  return m_pSourceModule[0]->getValue (xDistort, yDistort, zDistort);
 }
 
-void Turbulence::SetSeed (int seed)
+void Turbulence::setSeed (int seed)
 {
   // Set the seed of each noise::module::Perlin noise modules.  To prevent any
   // sort of weird artifacting, use a slightly different seed for each noise
   // module.
-  m_xDistortModule.SetSeed (seed    );
-  m_yDistortModule.SetSeed (seed + 1);
-  m_zDistortModule.SetSeed (seed + 2);
+  m_xDistortModule.setSeed (seed    );
+  m_yDistortModule.setSeed (seed + 1);
+  m_zDistortModule.setSeed (seed + 2);
 }

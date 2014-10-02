@@ -35,11 +35,11 @@ Sphere::Sphere (const module::Module& module):
 {
 }
 
-double Sphere::GetValue (double lat, double lon) const
+double Sphere::getValue (double lat, double lon) const
 {
   assert (m_pModule != NULL);
 
   double x, y, z;
   LatLonToXYZ (lat, lon, x, y, z);
-  return m_pModule->GetValue (x, y, z);
+  return m_pModule->getValue (x, y, z);
 }

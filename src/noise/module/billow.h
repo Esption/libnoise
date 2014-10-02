@@ -101,7 +101,7 @@ namespace noise
         /// Returns the frequency of the first octave.
         ///
         /// @returns The frequency of the first octave.
-        double GetFrequency () const
+        double getFrequency () const
         {
           return m_frequency;
         }
@@ -112,7 +112,7 @@ namespace noise
         /// 
         /// The lacunarity is the frequency multiplier between successive
         /// octaves.
-        double GetLacunarity () const
+        double getLacunarity () const
         {
           return m_lacunarity;
         }
@@ -134,7 +134,7 @@ namespace noise
         ///
         /// The number of octaves controls the amount of detail in the billowy
         /// noise.
-        int GetOctaveCount () const
+        int getOctaveCount () const
         {
           return m_octaveCount;
         }
@@ -144,7 +144,7 @@ namespace noise
         /// @returns The persistence value of the billowy noise.
         ///
         /// The persistence value controls the roughness of the billowy noise.
-        double GetPersistence () const
+        double getPersistence () const
         {
           return m_persistence;
         }
@@ -152,22 +152,22 @@ namespace noise
         /// Returns the seed value used by the billowy-noise function.
         ///
         /// @returns The seed value.
-        int GetSeed () const
+        int getSeed () const
         {
           return m_seed;
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 0;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Sets the frequency of the first octave.
         ///
         /// @param frequency The frequency of the first octave.
-        void SetFrequency (double frequency)
+        void setFrequency (double frequency)
         {
           m_frequency = frequency;
         }
@@ -181,7 +181,7 @@ namespace noise
         ///
         /// For best results, set the lacunarity to a number between 1.5 and
         /// 3.5.
-        void SetLacunarity (double lacunarity)
+        void setLacunarity (double lacunarity)
         {
           m_lacunarity = lacunarity;
         }
@@ -192,7 +192,7 @@ namespace noise
         ///
         /// See noise::NoiseQuality for definitions of the various
         /// coherent-noise qualities.
-        void SetNoiseQuality (noise::NoiseQuality noiseQuality)
+        void setNoiseQuality (noise::NoiseQuality noiseQuality)
         {
           m_noiseQuality = noiseQuality;
         }
@@ -213,7 +213,7 @@ namespace noise
         ///
         /// The larger the number of octaves, the more time required to
         /// calculate the billowy-noise value.
-        void SetOctaveCount (int octaveCount)
+        void setOctaveCount (int octaveCount)
         {
           if (octaveCount < 1 || octaveCount > BILLOW_MAX_OCTAVE) {
             throw noise::ExceptionInvalidParam ();
@@ -229,7 +229,7 @@ namespace noise
         ///
         /// For best results, set the persistence value to a number between
         /// 0.0 and 1.0.
-        void SetPersistence (double persistence)
+        void setPersistence (double persistence)
         {
           m_persistence = persistence;
         }
@@ -237,7 +237,7 @@ namespace noise
         /// Sets the seed value used by the billowy-noise function.
         ///
         /// @param seed The seed value.
-        void SetSeed (int seed)
+        void setSeed (int seed)
         {
           m_seed = seed;
         }

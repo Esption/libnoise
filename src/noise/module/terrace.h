@@ -54,10 +54,10 @@ namespace noise
     /// @image html terrace.png
     ///
     /// To add a control point to this noise module, call the
-    /// AddControlPoint() method.
+    /// addControlPoint() method.
     ///
     /// An application must add a minimum of two control points to the curve.
-    /// If this is not done, the GetValue() method fails.  The control points
+    /// If this is not done, the getValue() method fails.  The control points
     /// can have any value, although no two control points can have the same
     /// value.  There is no limit to the number of control points that can be
     /// added to the curve.
@@ -95,12 +95,12 @@ namespace noise
         /// increases.  At the control points, its slope resets to zero.
 	      ///
 	      /// It does not matter which order these points are added.
-	      void AddControlPoint (double value);
+	      void addControlPoint (double value);
 
 	      /// Deletes all the control points on the terrace-forming curve.
 	      ///
 	      /// @post All control points on the terrace-forming curve are deleted.
-	      void ClearAllControlPoints ();
+	      void clearAllControlPoints ();
 
 	      /// Returns a pointer to the array of control points on the
 	      /// terrace-forming curve.
@@ -112,13 +112,13 @@ namespace noise
         /// start of this curve has a slope of zero; its slope then smoothly
         /// increases.  At the control points, its slope resets to zero.
 	      ///
-        /// Before calling this method, call GetControlPointCount() to
+        /// Before calling this method, call getControlPointCount() to
         /// determine the number of control points in this array.
 	      ///
 	      /// It is recommended that an application does not store this pointer
         /// for later use since the pointer to the array may change if the
         /// application calls another method of this object.
-	      const double* GetControlPointArray () const
+	      const double* getControlPointArray () const
 	      {
 	        return m_pControlPoints;
 	      }
@@ -127,12 +127,12 @@ namespace noise
 	      ///
 	      /// @returns The number of control points on the terrace-forming
         /// curve.
-	      int GetControlPointCount () const
+	      int getControlPointCount () const
 	      {
 	        return m_controlPointCount;
 	      }
 
-    	  virtual int GetSourceModuleCount () const
+    	  virtual int getSourceModuleCount () const
 	      {
 	        return 1;
 	      }
@@ -142,7 +142,7 @@ namespace noise
         ///
 	      /// @param invert Specifies whether to invert the curve between the
         /// control points.
-	      void InvertTerraces (bool invert = true)
+	      void invertTerraces (bool invert = true)
 	      {
 	        m_invertTerraces = invert;
 	      }
@@ -154,12 +154,12 @@ namespace noise
         /// - @a true if the curve between the control points is inverted.
         /// - @a false if the curve between the control points is not
         ///   inverted.
-        bool IsTerracesInverted () const
+        bool isTerracesInverted () const
         {
 	        return m_invertTerraces;
         }
 
-    	  virtual double GetValue (double x, double y, double z) const;
+    	  virtual double getValue (double x, double y, double z) const;
 
 	      /// Creates a number of equally-spaced control points that range from
         /// -1 to +1.
@@ -178,7 +178,7 @@ namespace noise
 	      /// Two or more control points define the terrace-forming curve.  The
         /// start of this curve has a slope of zero; its slope then smoothly
         /// increases.  At the control points, its slope resets to zero.
-        void MakeControlPoints (int controlPointCount);
+        void makeControlPoints (int controlPointCount);
 
     	protected:
 

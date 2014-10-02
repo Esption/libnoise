@@ -25,17 +25,17 @@
 using namespace noise::module;
 
 Clamp::Clamp ():
-  Module (GetSourceModuleCount ()),
+  Module (getSourceModuleCount ()),
   m_lowerBound (DEFAULT_CLAMP_LOWER_BOUND),
   m_upperBound (DEFAULT_CLAMP_UPPER_BOUND)
 {
 }
 
-double Clamp::GetValue (double x, double y, double z) const
+double Clamp::getValue (double x, double y, double z) const
 {
   assert (m_pSourceModule[0] != NULL);
 
-  double value = m_pSourceModule[0]->GetValue (x, y, z);
+  double value = m_pSourceModule[0]->getValue (x, y, z);
   if (value < m_lowerBound) {
     return m_lowerBound;
   } else if (value > m_upperBound) {
@@ -45,7 +45,7 @@ double Clamp::GetValue (double x, double y, double z) const
   }
 }
 
-void Clamp::SetBounds (double lowerBound, double upperBound)
+void Clamp::setBounds (double lowerBound, double upperBound)
 {
   assert (lowerBound < upperBound);
 

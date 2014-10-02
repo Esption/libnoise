@@ -46,7 +46,7 @@ namespace noise
     /// coordinates of an input value located on the surface of a sphere.
     ///
     /// To generate an output value, pass the (latitude, longitude)
-    /// coordinates of an input value to the GetValue() method.
+    /// coordinates of an input value to the getValue() method.
     ///
     /// This model is useful for creating:
     /// - seamless textures that can be mapped onto a sphere
@@ -99,7 +99,7 @@ namespace noise
         ///
         /// Use a negative longitude if the input value is located on the
         /// western hemisphere.
-        double GetValue (double lat, double lon) const;
+        double getValue (double lat, double lon) const;
 
         /// Sets the noise module that is used to generate the output values.
         ///

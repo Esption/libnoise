@@ -63,7 +63,7 @@ namespace noise
     /// clamps that value to the upper bound.
     ///
     /// To specify the upper and lower bounds of the clamping range, call the
-    /// SetBounds() method.
+    /// setBounds() method.
     ///
     /// This noise module requires one source module.
     class Clamp: public Module
@@ -87,12 +87,12 @@ namespace noise
         /// If the output value from the source module is less than the lower
         /// bound of the clamping range, this noise module clamps that value
         /// to the lower bound.
-        double GetLowerBound () const
+        double getLowerBound () const
         {
           return m_lowerBound;
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 1;
         }
@@ -104,12 +104,12 @@ namespace noise
         /// If the output value from the source module is greater than the
         /// upper bound of the clamping range, this noise module clamps that
         /// value to the upper bound.
-        double GetUpperBound () const
+        double getUpperBound () const
         {
           return m_upperBound;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Sets the lower and upper bounds of the clamping range.
         ///
@@ -127,7 +127,7 @@ namespace noise
         /// to the lower bound.  If the output value from the source module
         /// is greater than the upper bound of the clamping range, this noise
         /// module clamps that value to the upper bound.
-        void SetBounds (double lowerBound, double upperBound);
+        void setBounds (double lowerBound, double upperBound);
 
       protected:
 

@@ -61,7 +61,7 @@ namespace noise
     ///
     /// An application can change the frequency of the concentric spheres.
     /// Increasing the frequency reduces the distances between spheres.  To
-    /// specify the frequency, call the SetFrequency() method.
+    /// specify the frequency, call the setFrequency() method.
     ///
     /// This noise module, modified with some low-frequency, low-power
     /// turbulence, is useful for generating agate-like textures.
@@ -84,17 +84,17 @@ namespace noise
         ///
         /// Increasing the frequency increases the density of the concentric
         /// spheres, reducing the distances between them.
-        double GetFrequency () const
+        double getFrequency () const
         {
           return m_frequency;
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 0;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Sets the frequenct of the concentric spheres.
         ///
@@ -102,7 +102,7 @@ namespace noise
         ///
         /// Increasing the frequency increases the density of the concentric
         /// spheres, reducing the distances between them.
-        void SetFrequency (double frequency)
+        void setFrequency (double frequency)
         {
           m_frequency = frequency;
         }

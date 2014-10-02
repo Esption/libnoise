@@ -29,7 +29,7 @@ using namespace noise::module;
 using namespace noise;
 
 Terrace::Terrace ():
-  Module (GetSourceModuleCount ()),
+  Module (getSourceModuleCount ()),
   m_controlPointCount (0),
   m_invertTerraces (false),
   m_pControlPoints (NULL)
@@ -41,7 +41,7 @@ Terrace::~Terrace ()
   delete[] m_pControlPoints;
 }
 
-void Terrace::AddControlPoint (double value)
+void Terrace::addControlPoint (double value)
 {
   // Find the insertion point for the new control point and insert the new
   // point at that position.  The control point array will remain sorted by
@@ -50,7 +50,7 @@ void Terrace::AddControlPoint (double value)
   InsertAtPos (insertionPos, value);
 }
 
-void Terrace::ClearAllControlPoints ()
+void Terrace::clearAllControlPoints ()
 {
   delete[] m_pControlPoints;
   m_pControlPoints = NULL;
@@ -74,13 +74,13 @@ int Terrace::FindInsertionPos (double value)
   return insertionPos;
 }
 
-double Terrace::GetValue (double x, double y, double z) const
+double Terrace::getValue (double x, double y, double z) const
 {
   assert (m_pSourceModule[0] != NULL);
   assert (m_controlPointCount >= 2);
 
   // Get the output value from the source module.
-  double sourceModuleValue = m_pSourceModule[0]->GetValue (x, y, z);
+  double sourceModuleValue = m_pSourceModule[0]->getValue (x, y, z);
 
   // Find the first element in the control point array that has a value
   // larger than the output value from the source module.
@@ -143,18 +143,18 @@ void Terrace::InsertAtPos (int insertionPos, double value)
   m_pControlPoints[insertionPos] = value;
 }
 
-void Terrace::MakeControlPoints (int controlPointCount)
+void Terrace::makeControlPoints (int controlPointCount)
 {
   if (controlPointCount < 2) {
     throw noise::ExceptionInvalidParam ();
   }
 
-  ClearAllControlPoints ();
+  clearAllControlPoints ();
 
   double terraceStep = 2.0 / ((double)controlPointCount - 1.0);
   double curValue = -1.0;
   for (int i = 0; i < (int)controlPointCount; i++) {
-    AddControlPoint (curValue);
+    addControlPoint (curValue);
     curValue += terraceStep;
   }
 }

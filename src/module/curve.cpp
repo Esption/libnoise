@@ -27,7 +27,7 @@
 using namespace noise::module;
 
 Curve::Curve ():
-  Module (GetSourceModuleCount ()),
+  Module (getSourceModuleCount ()),
   m_pControlPoints (NULL)
 {
   m_controlPointCount = 0;
@@ -38,7 +38,7 @@ Curve::~Curve ()
   delete[] m_pControlPoints;
 }
 
-void Curve::AddControlPoint (double inputValue, double outputValue)
+void Curve::addControlPoint (double inputValue, double outputValue)
 {
   // Find the insertion point for the new control point and insert the new
   // point at that position.  The control point array will remain sorted by
@@ -47,7 +47,7 @@ void Curve::AddControlPoint (double inputValue, double outputValue)
   InsertAtPos (insertionPos, inputValue, outputValue);
 }
 
-void Curve::ClearAllControlPoints ()
+void Curve::clearAllControlPoints ()
 {
   delete[] m_pControlPoints;
   m_pControlPoints = NULL;
@@ -71,13 +71,13 @@ int Curve::FindInsertionPos (double inputValue)
   return insertionPos;
 }
 
-double Curve::GetValue (double x, double y, double z) const
+double Curve::getValue (double x, double y, double z) const
 {
   assert (m_pSourceModule[0] != NULL);
   assert (m_controlPointCount >= 4);
 
   // Get the output value from the source module.
-  double sourceModuleValue = m_pSourceModule[0]->GetValue (x, y, z);
+  double sourceModuleValue = m_pSourceModule[0]->getValue (x, y, z);
 
   // Find the first element in the control point array that has an input value
   // larger than the output value from the source module.

@@ -68,16 +68,16 @@ namespace noise
     ///   this noise module outputs the value from the source module with an
     ///   index value of 0.
     ///
-    /// To specify the bounds of the selection range, call the SetBounds()
+    /// To specify the bounds of the selection range, call the setBounds()
     /// method.
     ///
-    /// An application can pass the control module to the SetControlModule()
-    /// method instead of the SetSourceModule() method.  This may make the
+    /// An application can pass the control module to the setControlModule()
+    /// method instead of the setsourceModule() method.  This may make the
     /// application code easier to read.
     ///
     /// By default, there is an abrupt transition between the output values
     /// from the two source modules at the selection-range boundary.  To
-    /// smooth the transition, pass a non-zero value to the SetEdgeFalloff()
+    /// smooth the transition, pass a non-zero value to the setEdgeFalloff()
     /// method.  Higher values result in a smoother transition.
     ///
     /// This noise module requires three source modules.
@@ -103,18 +103,18 @@ namespace noise
         /// @returns A reference to the control module.
         ///
         /// @pre A control module has been added to this noise module via a
-        /// call to SetSourceModule() or SetControlModule().
+        /// call to setsourceModule() or setControlModule().
         ///
         /// @throw noise::ExceptionNoModule See the preconditions for more
         /// information.
         ///
         /// The control module determines the output value to select.  If the
         /// output value from the control module is within a range of values
-        /// known as the <i>selection range</i>, the GetValue() method outputs
+        /// known as the <i>selection range</i>, the getValue() method outputs
         /// the value from the source module with an index value of 1.
         /// Otherwise, this method outputs the value from the source module
         /// with an index value of 0.
-        const Module& GetControlModule () const
+        const Module& getControlModule () const
         {
           if (m_pSourceModule == NULL || m_pSourceModule[2] == NULL) {
             throw noise::ExceptionNoModule ();
@@ -132,7 +132,7 @@ namespace noise
         /// By default, there is an abrupt transition between the output
         /// values from the two source modules at the selection-range
         /// boundary.
-        double GetEdgeFalloff () const
+        double getEdgeFalloff () const
         {
           return m_edgeFalloff;
         }
@@ -142,15 +142,15 @@ namespace noise
         /// @returns The lower bound of the selection range.
         ///
         /// If the output value from the control module is within the
-        /// selection range, the GetValue() method outputs the value from the
+        /// selection range, the getValue() method outputs the value from the
         /// source module with an index value of 1.  Otherwise, this method
         /// outputs the value from the source module with an index value of 0.
-        double GetLowerBound () const
+        double getLowerBound () const
         {
           return m_lowerBound;
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 3;
         }
@@ -160,15 +160,15 @@ namespace noise
         /// @returns The upper bound of the selection range.
         ///
         /// If the output value from the control module is within the
-        /// selection range, the GetValue() method outputs the value from the
+        /// selection range, the getValue() method outputs the value from the
         /// source module with an index value of 1.  Otherwise, this method
         /// outputs the value from the source module with an index value of 0.
-        double GetUpperBound () const
+        double getUpperBound () const
         {
           return m_upperBound;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Sets the lower and upper bounds of the selection range.
         ///
@@ -182,10 +182,10 @@ namespace noise
         /// specified; see the preconditions for more information.
         ///
         /// If the output value from the control module is within the
-        /// selection range, the GetValue() method outputs the value from the
+        /// selection range, the getValue() method outputs the value from the
         /// source module with an index value of 1.  Otherwise, this method
         /// outputs the value from the source module with an index value of 0.
-        void SetBounds (double lowerBound, double upperBound);
+        void setBounds (double lowerBound, double upperBound);
 
         /// Sets the control module.
         ///
@@ -193,20 +193,20 @@ namespace noise
         ///
         /// The control module determines the output value to select.  If the
         /// output value from the control module is within a range of values
-        /// known as the <i>selection range</i>, the GetValue() method outputs
+        /// known as the <i>selection range</i>, the getValue() method outputs
         /// the value from the source module with an index value of 1.
         /// Otherwise, this method outputs the value from the source module
         /// with an index value of 0.
         ///
         /// This method assigns the control module an index value of 2.
         /// Passing the control module to this method produces the same
-        /// results as passing the control module to the SetSourceModule()
+        /// results as passing the control module to the setsourceModule()
         /// method while assigning that noise module an index value of 2.
         ///
         /// This control module must exist throughout the lifetime of this
         /// noise module unless another control module replaces that control
         /// module.
-        void SetControlModule (const Module& controlModule)
+        void setControlModule (const Module& controlModule)
         {
           assert (m_pSourceModule != NULL);
           m_pSourceModule[2] = &controlModule;
@@ -223,7 +223,7 @@ namespace noise
         /// the two source modules at the boundaries of the selection range.
         ///
         /// For example, if the selection range is 0.5 to 0.8, and the edge
-        /// falloff value is 0.1, then the GetValue() method outputs:
+        /// falloff value is 0.1, then the getValue() method outputs:
         /// - the output value from the source module with an index value of 0
         ///   if the output value from the control module is less than 0.4
         ///   ( = 0.5 - 0.1).
@@ -239,7 +239,7 @@ namespace noise
         /// - the output value from the source module with an index value of 0
         ///   if the output value from the control module is greater than 0.9
         ///   ( = 0.8 + 0.1).
-        void SetEdgeFalloff (double edgeFalloff);
+        void setEdgeFalloff (double edgeFalloff);
 
       protected:
 

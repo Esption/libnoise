@@ -57,7 +57,7 @@ namespace noise
     /// - Source module 3 (lower right in the diagram) specifies the offset
     ///   to apply to the @a z coordinate of the input value.
     ///
-    /// The GetValue() method modifies the ( @a x, @a y, @a z ) coordinates of
+    /// The getValue() method modifies the ( @a x, @a y, @a z ) coordinates of
     /// the input value using the output values from the three displacement
     /// modules before retrieving the output value from the source module.
     ///
@@ -74,28 +74,28 @@ namespace noise
       /// Constructor.
       Displace ();
 
-      virtual int GetSourceModuleCount () const
+      virtual int getSourceModuleCount () const
       {
         return 4;
       }
 
-      virtual double GetValue (double x, double y, double z) const;
+      virtual double getValue (double x, double y, double z) const;
 
       /// Returns the @a x displacement module.
       ///
       /// @returns A reference to the @a x displacement module.
       ///
       /// @pre This displacement module has been added to this noise module
-      /// via a call to SetSourceModule() or SetXDisplaceModule().
+      /// via a call to setsourceModule() or setXDisplaceModule().
       ///
       /// @throw noise::ExceptionNoModule See the preconditions for more
       /// information.
       ///
-      /// The GetValue() method displaces the input value by adding the output
+      /// The getValue() method displaces the input value by adding the output
       /// value from this displacement module to the @a x coordinate of the
       /// input value before returning the output value from the source
       /// module.
-      const Module& GetXDisplaceModule () const
+      const Module& getXDisplaceModule () const
       {
         if (m_pSourceModule == NULL || m_pSourceModule[1] == NULL) {
           throw noise::ExceptionNoModule ();
@@ -108,16 +108,16 @@ namespace noise
       /// @returns A reference to the @a y displacement module.
       ///
       /// @pre This displacement module has been added to this noise module
-      /// via a call to SetSourceModule() or SetYDisplaceModule().
+      /// via a call to setsourceModule() or setYDisplaceModule().
       ///
       /// @throw noise::ExceptionNoModule See the preconditions for more
       /// information.
       ///
-      /// The GetValue() method displaces the input value by adding the output
+      /// The getValue() method displaces the input value by adding the output
       /// value from this displacement module to the @a y coordinate of the
       /// input value before returning the output value from the source
       /// module.
-      const Module& GetYDisplaceModule () const
+      const Module& getYDisplaceModule () const
       {
         if (m_pSourceModule == NULL || m_pSourceModule[2] == NULL) {
           throw noise::ExceptionNoModule ();
@@ -130,16 +130,16 @@ namespace noise
       /// @returns A reference to the @a z displacement module.
       ///
       /// @pre This displacement module has been added to this noise module
-      /// via a call to SetSourceModule() or SetZDisplaceModule().
+      /// via a call to setsourceModule() or setZDisplaceModule().
       ///
       /// @throw noise::ExceptionNoModule See the preconditions for more
       /// information.
       ///
-      /// The GetValue() method displaces the input value by adding the output
+      /// The getValue() method displaces the input value by adding the output
       /// value from this displacement module to the @a z coordinate of the
       /// input value before returning the output value from the source
       /// module.
-      const Module& GetZDisplaceModule () const
+      const Module& getZDisplaceModule () const
       {
         if (m_pSourceModule == NULL || m_pSourceModule[3] == NULL) {
           throw noise::ExceptionNoModule ();
@@ -156,7 +156,7 @@ namespace noise
       /// @param zDisplaceModule Displacement module that displaces the @a z
       /// coordinate of the input value.
       ///
-      /// The GetValue() method displaces the input value by adding the output
+      /// The getValue() method displaces the input value by adding the output
       /// value from each of the displacement modules to the corresponding
       /// coordinates of the input value before returning the output value
       /// from the source module.
@@ -167,12 +167,12 @@ namespace noise
       ///
       /// These displacement modules must exist throughout the lifetime of
       /// this noise module unless another displacement module replaces it.
-      void SetDisplaceModules (const Module& xDisplaceModule,
+      void setDisplaceModules (const Module& xDisplaceModule,
         const Module& yDisplaceModule, const Module& zDisplaceModule)
       {
-        SetXDisplaceModule (xDisplaceModule);
-        SetYDisplaceModule (yDisplaceModule);
-        SetZDisplaceModule (zDisplaceModule);
+        setXDisplaceModule (xDisplaceModule);
+        setYDisplaceModule (yDisplaceModule);
+        setZDisplaceModule (zDisplaceModule);
       }
 
       /// Sets the @a x displacement module.
@@ -180,7 +180,7 @@ namespace noise
       /// @param xDisplaceModule Displacement module that displaces the @a x
       /// coordinate.
       ///
-      /// The GetValue() method displaces the input value by adding the output
+      /// The getValue() method displaces the input value by adding the output
       /// value from this displacement module to the @a x coordinate of the
       /// input value before returning the output value from the source
       /// module.
@@ -188,11 +188,11 @@ namespace noise
       /// This method assigns an index value of 1 to the @a x displacement
       /// module.  Passing this displacement module to this method produces
       /// the same results as passing this displacement module to the
-      /// SetSourceModule() method while assigning it an index value of 1.
+      /// setsourceModule() method while assigning it an index value of 1.
       ///
       /// This displacement module must exist throughout the lifetime of this
       /// noise module unless another displacement module replaces it.
-      void SetXDisplaceModule (const Module& xDisplaceModule)
+      void setXDisplaceModule (const Module& xDisplaceModule)
       {
         assert (m_pSourceModule != NULL);
         m_pSourceModule[1] = &xDisplaceModule;
@@ -203,7 +203,7 @@ namespace noise
       /// @param yDisplaceModule Displacement module that displaces the @a y
       /// coordinate.
       ///
-      /// The GetValue() method displaces the input value by adding the output
+      /// The getValue() method displaces the input value by adding the output
       /// value from this displacement module to the @a y coordinate of the
       /// input value before returning the output value from the source
       /// module.
@@ -211,11 +211,11 @@ namespace noise
       /// This method assigns an index value of 2 to the @a y displacement
       /// module.  Passing this displacement module to this method produces
       /// the same results as passing this displacement module to the
-      /// SetSourceModule() method while assigning it an index value of 2.
+      /// setsourceModule() method while assigning it an index value of 2.
       ///
       /// This displacement module must exist throughout the lifetime of this
       /// noise module unless another displacement module replaces it.
-      void SetYDisplaceModule (const Module& yDisplaceModule)
+      void setYDisplaceModule (const Module& yDisplaceModule)
       {
         assert (m_pSourceModule != NULL);
         m_pSourceModule[2] = &yDisplaceModule;
@@ -226,7 +226,7 @@ namespace noise
       /// @param zDisplaceModule Displacement module that displaces the @a z
       /// coordinate.
       ///
-      /// The GetValue() method displaces the input value by adding the output
+      /// The getValue() method displaces the input value by adding the output
       /// value from this displacement module to the @a z coordinate of the
       /// input value before returning the output value from the source
       /// module.
@@ -234,11 +234,11 @@ namespace noise
       /// This method assigns an index value of 3 to the @a z displacement
       /// module.  Passing this displacement module to this method produces
       /// the same results as passing this displacement module to the
-      /// SetSourceModule() method while assigning it an index value of 3.
+      /// setsourceModule() method while assigning it an index value of 3.
       ///
       /// This displacement module must exist throughout the lifetime of this
       /// noise module unless another displacement module replaces it.
-      void SetZDisplaceModule (const Module& zDisplaceModule)
+      void setZDisplaceModule (const Module& zDisplaceModule)
       {
         assert (m_pSourceModule != NULL);
         m_pSourceModule[3] = &zDisplaceModule;

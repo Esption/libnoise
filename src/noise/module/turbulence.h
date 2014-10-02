@@ -58,24 +58,24 @@ namespace noise
     /// @image html moduleturbulence.png
     ///
     /// @a Turbulence is the pseudo-random displacement of the input value.
-    /// The GetValue() method randomly displaces the ( @a x, @a y, @a z )
+    /// The getValue() method randomly displaces the ( @a x, @a y, @a z )
     /// coordinates of the input value before retrieving the output value from
     /// the source module.  To control the turbulence, an application can
     /// modify its frequency, its power, and its roughness.
     ///
     /// The frequency of the turbulence determines how rapidly the
     /// displacement amount changes.  To specify the frequency, call the
-    /// SetFrequency() method.
+    /// setFrequency() method.
     ///
     /// The power of the turbulence determines the scaling factor that is
     /// applied to the displacement amount.  To specify the power, call the
-    /// SetPower() method.
+    /// setPower() method.
     ///
     /// The roughness of the turbulence determines the roughness of the
     /// changes to the displacement amount.  Low values smoothly change the
     /// displacement amount.  High values roughly change the displacement
     /// amount, which produces more "kinky" changes.  To specify the
-    /// roughness, call the SetRoughness() method.
+    /// roughness, call the setRoughness() method.
     ///
     /// Use of this noise module may require some trial and error.  Assuming
     /// that you are using a generator module as the source module, you
@@ -136,7 +136,7 @@ namespace noise
         ///
         /// The frequency of the turbulence determines how rapidly the
         /// displacement amount changes.
-        double GetFrequency () const;
+        double getFrequency () const;
 
         /// Returns the power of the turbulence.
         ///
@@ -144,7 +144,7 @@ namespace noise
         ///
         /// The power of the turbulence determines the scaling factor that is
         /// applied to the displacement amount.
-        double GetPower () const
+        double getPower () const
         {
           return m_power;
         }
@@ -157,9 +157,9 @@ namespace noise
         /// changes to the displacement amount.  Low values smoothly change
         /// the displacement amount.  High values roughly change the
         /// displacement amount, which produces more "kinky" changes.
-        int GetRoughnessCount () const
+        int getRoughnessCount () const
         {
-          return m_xDistortModule.GetOctaveCount ();
+          return m_xDistortModule.getOctaveCount ();
         }
 
         /// Returns the seed value of the internal Perlin-noise modules that
@@ -170,14 +170,14 @@ namespace noise
         /// Internally, there are three noise::module::Perlin noise modules
         /// that displace the input value; one for the @a x, one for the @a y,
         /// and one for the @a z coordinate.  
-        int GetSeed () const;
+        int getSeed () const;
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 1;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Sets the frequency of the turbulence.
         ///
@@ -185,12 +185,12 @@ namespace noise
         ///
         /// The frequency of the turbulence determines how rapidly the
         /// displacement amount changes.
-        void SetFrequency (double frequency)
+        void setFrequency (double frequency)
         {
           // Set the frequency of each Perlin-noise module.
-          m_xDistortModule.SetFrequency (frequency);
-          m_yDistortModule.SetFrequency (frequency);
-          m_zDistortModule.SetFrequency (frequency);
+          m_xDistortModule.setFrequency (frequency);
+          m_yDistortModule.setFrequency (frequency);
+          m_zDistortModule.setFrequency (frequency);
         }
 
         /// Sets the power of the turbulence.
@@ -199,7 +199,7 @@ namespace noise
         ///
         /// The power of the turbulence determines the scaling factor that is
         /// applied to the displacement amount.
-        void SetPower (double power)
+        void setPower (double power)
         {
           m_power = power;
         }
@@ -218,12 +218,12 @@ namespace noise
         /// and one for the @a z coordinate.  The roughness value is equal to
         /// the number of octaves used by the noise::module::Perlin noise
         /// modules.
-        void SetRoughness (int roughness)
+        void setRoughness (int roughness)
         {
           // Set the octave count for each Perlin-noise module.
-          m_xDistortModule.SetOctaveCount (roughness);
-          m_yDistortModule.SetOctaveCount (roughness);
-          m_zDistortModule.SetOctaveCount (roughness);
+          m_xDistortModule.setOctaveCount (roughness);
+          m_yDistortModule.setOctaveCount (roughness);
+          m_zDistortModule.setOctaveCount (roughness);
         }
 
         /// Sets the seed value of the internal noise modules that are used to
@@ -238,7 +238,7 @@ namespace noise
         /// - It assigns the seed value (@a seed + 0) to the @a x noise module.
         /// - It assigns the seed value (@a seed + 1) to the @a y noise module.
         /// - It assigns the seed value (@a seed + 2) to the @a z noise module.
-        void SetSeed (int seed);
+        void setSeed (int seed);
 
       protected:
 

@@ -148,21 +148,21 @@ namespace noise
     /// <b>Connecting source modules to a noise module</b>
     ///
     /// An application connects a source module to a noise module by passing
-    /// the source module to the SetSourceModule() method.
+    /// the source module to the setsourceModule() method.
     ///
     /// The application must also pass an <i>index value</i> to
-    /// SetSourceModule() as well.  An index value is a numeric identifier for
+    /// setsourceModule() as well.  An index value is a numeric identifier for
     /// that source module.  Index values are consecutively numbered starting
     /// at zero.
     ///
     /// To retrieve a reference to a source module, pass its index value to
-    /// the GetSourceModule() method.
+    /// the getSourceModule() method.
     ///
     /// Each noise module requires the attachment of a certain number of
     /// source modules before it can output a value.  For example, the
     /// noise::module::Add module requires two source modules, while the
     /// noise::module::Perlin module requires none.  Call the
-    /// GetSourceModuleCount() method to retrieve the number of source modules
+    /// getSourceModuleCount() method to retrieve the number of source modules
     /// required by that module.
     ///
     /// For non-selector modules, it usually does not matter which index value
@@ -182,14 +182,14 @@ namespace noise
     /// with that noise module.
     ///
     /// To generate an output value, pass the ( @a x, @a y, @a z ) coordinates
-    /// of an input value to the GetValue() method.
+    /// of an input value to the getValue() method.
     ///
     /// <b>Using a noise module to generate terrain height maps or textures</b>
     ///
     /// One way to generate a terrain height map or a texture is to first
     /// allocate a 2-dimensional array of floating-point values.  For each
     /// array element, pass the array subscripts as @a x and @a y coordinates
-    /// to the GetValue() method (leaving the @a z coordinate set to zero) and
+    /// to the getValue() method (leaving the @a z coordinate set to zero) and
     /// place the resulting output value into the array element.
     ///
     /// <b>Creating your own noise modules</b>
@@ -197,13 +197,13 @@ namespace noise
     /// Create a class that publicly derives from noise::module::Module.
     ///
     /// In the constructor, call the base class' constructor while passing the
-    /// return value from GetSourceModuleCount() to it.
+    /// return value from getSourceModuleCount() to it.
     ///
-    /// Override the GetSourceModuleCount() pure virtual method.  From this
+    /// Override the getSourceModuleCount() pure virtual method.  From this
     /// method, return the number of source modules required by your noise
     /// module.
     ///
-    /// Override the GetValue() pure virtual method.  For generator modules,
+    /// Override the getValue() pure virtual method.  For generator modules,
     /// calculate and output a value given the coordinates of the input value.
     /// For other modules, retrieve the output values from each source module
     /// referenced in the protected @a m_pSourceModule array, mathematically
@@ -213,8 +213,8 @@ namespace noise
     /// does not modify any source module or control module connected to it; a
     /// noise module can only modify the output value from those source
     /// modules.  You must also ensure that if an application fails to connect
-    /// all required source modules via the SetSourceModule() method and then
-    /// attempts to call the GetValue() method, your module will raise an
+    /// all required source modules via the setsourceModule() method and then
+    /// attempts to call the getValue() method, your module will raise an
     /// assertion.
     ///
     /// It shouldn't be too difficult to create your own noise module.  If you
@@ -241,15 +241,15 @@ namespace noise
         /// @pre The index value ranges from 0 to one less than the number of
         /// source modules required by this noise module.
         /// @pre A source module with the specified index value has been added
-        /// to this noise module via a call to SetSourceModule().
+        /// to this noise module via a call to setsourceModule().
         ///
         /// @throw noise::ExceptionNoModule See the preconditions for more
         /// information.
         ///
         /// Each noise module requires the attachment of a certain number of
-        /// source modules before an application can call the GetValue()
+        /// source modules before an application can call the getValue()
         /// method.
-        virtual const Module& GetSourceModule (int index) const
+        virtual const Module& getSourceModule (int index) const
         {
           assert (m_pSourceModule != NULL);
 
@@ -260,7 +260,7 @@ namespace noise
           // was incorrect; it should be:
           //
           //   m_pSourceModule[index] == NULL
-          if (index >= GetSourceModuleCount () || index < 0
+          if (index >= getSourceModuleCount () || index < 0
             || m_pSourceModule[index] == NULL) {
             throw noise::ExceptionNoModule ();
           }
@@ -272,7 +272,7 @@ namespace noise
         ///
         /// @returns The number of source modules required by this noise
         /// module.
-        virtual int GetSourceModuleCount () const = 0;
+        virtual int getSourceModuleCount () const = 0;
 
         /// Generates an output value given the coordinates of the specified
         /// input value.
@@ -284,16 +284,16 @@ namespace noise
         /// @returns The output value.
         ///
         /// @pre All source modules required by this noise module have been
-        /// passed to the SetSourceModule() method.
+        /// passed to the setsourceModule() method.
         ///
         /// Before an application can call this method, it must first connect
-        /// all required source modules via the SetSourceModule() method.  If
+        /// all required source modules via the setsourceModule() method.  If
         /// these source modules are not connected to this noise module, this
         /// method raises a debug assertion.
         ///
         /// To determine the number of source modules required by this noise
-        /// module, call the GetSourceModuleCount() method.
-        virtual double GetValue (double x, double y, double z) const = 0;
+        /// module, call the getSourceModuleCount() method.
+        virtual double getValue (double x, double y, double z) const = 0;
 
         /// Connects a source module to this noise module.
         ///
@@ -307,17 +307,17 @@ namespace noise
         /// specified; see the preconditions for more information.
         ///
         /// A noise module mathematically combines the output values from the
-        /// source modules to generate the value returned by GetValue().
+        /// source modules to generate the value returned by getValue().
         ///
         /// The index value to assign a source module is a unique identifier
         /// for that source module.  If an index value has already been
         /// assigned to a source module, this noise module replaces the old
         /// source module with the new source module.
         ///
-        /// Before an application can call the GetValue() method, it must
+        /// Before an application can call the getValue() method, it must
         /// first connect all required source modules.  To determine the
         /// number of source modules required by this noise module, call the
-        /// GetSourceModuleCount() method.
+        /// getSourceModuleCount() method.
         ///
         /// This source module must exist throughout the lifetime of this
         /// noise module unless another source module replaces that source
@@ -325,10 +325,10 @@ namespace noise
         ///
         /// A noise module does not modify a source module; it only modifies
         /// its output values.
-        virtual void SetSourceModule (int index, const Module& sourceModule)
+        virtual void setsourceModule (int index, const Module& sourceModule)
         {
           assert (m_pSourceModule != NULL);
-          if (index >= GetSourceModuleCount () || index < 0) {
+          if (index >= getSourceModuleCount () || index < 0) {
             throw noise::ExceptionInvalidParam ();
           }
           m_pSourceModule[index] = &sourceModule;

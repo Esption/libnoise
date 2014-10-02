@@ -49,7 +49,7 @@ namespace noise
     /// coordinates of an input value located on the surface of a cylinder.
     ///
     /// To generate an output value, pass the (angle, height) coordinates of
-    /// an input value to the GetValue() method.
+    /// an input value to the getValue() method.
     ///
     /// This model is useful for creating:
     /// - seamless textures that can be mapped onto a cylinder
@@ -99,7 +99,7 @@ namespace noise
         /// This cylinder has a radius of 1.0 unit and has infinite height.
         /// It is oriented along the @a y axis.  Its center is located at the
         /// origin.
-        double GetValue (double angle, double height) const;
+        double getValue (double angle, double height) const;
 
         /// Sets the noise module that is used to generate the output values.
         ///

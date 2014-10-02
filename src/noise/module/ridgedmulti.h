@@ -96,12 +96,12 @@ namespace noise
     /// the calculation time.
     ///
     /// An application may specify the number of octaves that generate
-    /// ridged-multifractal noise by calling the SetOctaveCount() method.
+    /// ridged-multifractal noise by calling the setOctaveCount() method.
     ///
     /// <b>Frequency</b>
     ///
     /// An application may specify the frequency of the first octave by
-    /// calling the SetFrequency() method.
+    /// calling the setFrequency() method.
     ///
     /// <b>Lacunarity</b>
     ///
@@ -148,7 +148,7 @@ namespace noise
         /// Returns the frequency of the first octave.
         ///
         /// @returns The frequency of the first octave.
-        double GetFrequency () const
+        double getFrequency () const
         {
           return m_frequency;
         }
@@ -159,7 +159,7 @@ namespace noise
         /// 
         /// The lacunarity is the frequency multiplier between successive
         /// octaves.
-        double GetLacunarity () const
+        double getLacunarity () const
         {
           return m_lacunarity;
         }
@@ -183,7 +183,7 @@ namespace noise
         ///
         /// The number of octaves controls the amount of detail in the
         /// ridged-multifractal noise.
-        int GetOctaveCount () const
+        int getOctaveCount () const
         {
           return m_octaveCount;
         }
@@ -192,22 +192,22 @@ namespace noise
         /// function.
         ///
         /// @returns The seed value.
-        int GetSeed () const
+        int getSeed () const
         {
           return m_seed;
         }
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 0;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Sets the frequency of the first octave.
         ///
         /// @param frequency The frequency of the first octave.
-        void SetFrequency (double frequency)
+        void setFrequency (double frequency)
         {
           m_frequency = frequency;
         }
@@ -221,7 +221,7 @@ namespace noise
         ///
         /// For best results, set the lacunarity to a number between 1.5 and
         /// 3.5.
-        void SetLacunarity (double lacunarity)
+        void setLacunarity (double lacunarity)
         {
           m_lacunarity = lacunarity;
           CalcSpectralWeights ();
@@ -233,7 +233,7 @@ namespace noise
         ///
         /// See noise::NoiseQuality for definitions of the various
         /// coherent-noise qualities.
-        void SetNoiseQuality (noise::NoiseQuality noiseQuality)
+        void setNoiseQuality (noise::NoiseQuality noiseQuality)
         {
           m_noiseQuality = noiseQuality;
         }
@@ -255,7 +255,7 @@ namespace noise
         ///
         /// The larger the number of octaves, the more time required to
         /// calculate the ridged-multifractal-noise value.
-        void SetOctaveCount (int octaveCount)
+        void setOctaveCount (int octaveCount)
         {
           if (octaveCount > RIDGED_MAX_OCTAVE) {
             throw noise::ExceptionInvalidParam ();
@@ -267,7 +267,7 @@ namespace noise
         /// function.
         ///
         /// @param seed The seed value.
-        void SetSeed (int seed)
+        void setSeed (int seed)
         {
           m_seed = seed;
         }

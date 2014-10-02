@@ -25,7 +25,7 @@
 using namespace noise::module;
 
 Const::Const ():
-  Module (GetSourceModuleCount ()),
+  Module (getSourceModuleCount ()),
   m_constValue (DEFAULT_CONST_VALUE)
 {
 }

@@ -57,11 +57,11 @@ namespace noise
     ///
     /// @image html modulerotatepoint.png
     ///
-    /// The GetValue() method rotates the coordinates of the input value
+    /// The getValue() method rotates the coordinates of the input value
     /// around the origin before returning the output value from the source
-    /// module.  To set the rotation angles, call the SetAngles() method.  To
+    /// module.  To set the rotation angles, call the setAngles() method.  To
     /// set the rotation angle around the individual @a x, @a y, or @a z axes,
-    /// call the SetXAngle(), SetYAngle() or SetZAngle() methods,
+    /// call the setXAngle(), setYAngle() or setZAngle() methods,
     /// respectively.
     ///
     /// The coordinate system of the input value is assumed to be
@@ -86,18 +86,18 @@ namespace noise
         /// set to noise::module::DEFAULT_ROTATE_Z.
         RotatePoint ();
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 1;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
         /// Returns the rotation angle around the @a x axis to apply to the
         /// input value.
         ///
         /// @returns The rotation angle around the @a x axis, in degrees.
-        double GetXAngle () const
+        double getXAngle () const
         {
           return m_xAngle;
         }
@@ -106,7 +106,7 @@ namespace noise
         /// input value.
         ///
         /// @returns The rotation angle around the @a y axis, in degrees.
-        double GetYAngle () const
+        double getYAngle () const
         {
           return m_yAngle;
         }
@@ -115,7 +115,7 @@ namespace noise
         /// input value.
         ///
         /// @returns The rotation angle around the @a z axis, in degrees.
-        double GetZAngle () const
+        double getZAngle () const
         {
           return m_zAngle;
         }
@@ -127,22 +127,22 @@ namespace noise
         /// @param yAngle The rotation angle around the @a y axis, in degrees.
         /// @param zAngle The rotation angle around the @a z axis, in degrees.
         ///
-        /// The GetValue() method rotates the coordinates of the input value
+        /// The getValue() method rotates the coordinates of the input value
         /// around the origin before returning the output value from the
         /// source module.
-        void SetAngles (double xAngle, double yAngle, double zAngle);
+        void setAngles (double xAngle, double yAngle, double zAngle);
 
         /// Sets the rotation angle around the @a x axis to apply to the input
         /// value.
         ///
         /// @param xAngle The rotation angle around the @a x axis, in degrees.
         ///
-        /// The GetValue() method rotates the coordinates of the input value
+        /// The getValue() method rotates the coordinates of the input value
         /// around the origin before returning the output value from the
         /// source module.
-        void SetXAngle (double xAngle)
+        void setXAngle (double xAngle)
         {
-          SetAngles (xAngle, m_yAngle, m_zAngle);
+          setAngles (xAngle, m_yAngle, m_zAngle);
         }
 
         /// Sets the rotation angle around the @a y axis to apply to the input
@@ -150,12 +150,12 @@ namespace noise
         ///
         /// @param yAngle The rotation angle around the @a y axis, in degrees.
         ///
-        /// The GetValue() method rotates the coordinates of the input value
+        /// The getValue() method rotates the coordinates of the input value
         /// around the origin before returning the output value from the
         /// source module.
-        void SetYAngle (double yAngle)
+        void setYAngle (double yAngle)
         {
-          SetAngles (m_xAngle, yAngle, m_zAngle);
+          setAngles (m_xAngle, yAngle, m_zAngle);
         }
 
         /// Sets the rotation angle around the @a z axis to apply to the input
@@ -163,12 +163,12 @@ namespace noise
         ///
         /// @param zAngle The rotation angle around the @a z axis, in degrees.
         ///
-        /// The GetValue() method rotates the coordinates of the input value
+        /// The getValue() method rotates the coordinates of the input value
         /// around the origin before returning the output value from the
         /// source module.
-        void SetZAngle (double zAngle)
+        void setZAngle (double zAngle)
         {
-          SetAngles (m_xAngle, m_yAngle, zAngle);
+          setAngles (m_xAngle, m_yAngle, zAngle);
         }
 
       protected:

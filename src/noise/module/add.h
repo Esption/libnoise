@@ -55,12 +55,12 @@ namespace noise
         /// Constructor.
         Add ();
 
-        virtual int GetSourceModuleCount () const
+        virtual int getSourceModuleCount () const
         {
           return 2;
         }
 
-        virtual double GetValue (double x, double y, double z) const;
+        virtual double getValue (double x, double y, double z) const;
 
     };
 
