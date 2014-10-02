@@ -1,3 +1,12 @@
+Why this fork exists.
+----------------
+This is mostly just a fork to have camelCase function names.
+I may add some other things, but that was the "main" reason. (I found it super annoying)
+
+Here's a link to the original, https://github.com/qknight/libnoise
+Which you should probably use instead, unless you plan on shipping with libnoise statically linked or -rpath'd.
+
+
 libnoise
 ========
 
