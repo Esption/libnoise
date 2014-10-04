@@ -148,10 +148,10 @@ namespace noise
     /// <b>Connecting source modules to a noise module</b>
     ///
     /// An application connects a source module to a noise module by passing
-    /// the source module to the setsourceModule() method.
+    /// the source module to the setSourceModule() method.
     ///
     /// The application must also pass an <i>index value</i> to
-    /// setsourceModule() as well.  An index value is a numeric identifier for
+    /// setSourceModule() as well.  An index value is a numeric identifier for
     /// that source module.  Index values are consecutively numbered starting
     /// at zero.
     ///
@@ -213,7 +213,7 @@ namespace noise
     /// does not modify any source module or control module connected to it; a
     /// noise module can only modify the output value from those source
     /// modules.  You must also ensure that if an application fails to connect
-    /// all required source modules via the setsourceModule() method and then
+    /// all required source modules via the setSourceModule() method and then
     /// attempts to call the getValue() method, your module will raise an
     /// assertion.
     ///
@@ -241,7 +241,7 @@ namespace noise
         /// @pre The index value ranges from 0 to one less than the number of
         /// source modules required by this noise module.
         /// @pre A source module with the specified index value has been added
-        /// to this noise module via a call to setsourceModule().
+        /// to this noise module via a call to setSourceModule().
         ///
         /// @throw noise::ExceptionNoModule See the preconditions for more
         /// information.
@@ -284,10 +284,10 @@ namespace noise
         /// @returns The output value.
         ///
         /// @pre All source modules required by this noise module have been
-        /// passed to the setsourceModule() method.
+        /// passed to the setSourceModule() method.
         ///
         /// Before an application can call this method, it must first connect
-        /// all required source modules via the setsourceModule() method.  If
+        /// all required source modules via the setSourceModule() method.  If
         /// these source modules are not connected to this noise module, this
         /// method raises a debug assertion.
         ///
@@ -325,7 +325,7 @@ namespace noise
         ///
         /// A noise module does not modify a source module; it only modifies
         /// its output values.
-        virtual void setsourceModule (int index, const Module& sourceModule)
+        virtual void setSourceModule (int index, const Module& sourceModule)
         {
           assert (m_pSourceModule != NULL);
           if (index >= getSourceModuleCount () || index < 0) {

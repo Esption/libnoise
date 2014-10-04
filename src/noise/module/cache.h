@@ -55,7 +55,7 @@ namespace noise
     /// module returns the cached output value without having the source
     /// module recalculate the output value.
     ///
-    /// If an application passes a new source module to the setsourceModule()
+    /// If an application passes a new source module to the setSourceModule()
     /// method, the cache is invalidated.
     ///
     /// Caching a noise module is useful if it is used as a source module for
@@ -79,9 +79,9 @@ namespace noise
 
         virtual double getValue (double x, double y, double z) const;
 
-        virtual void setsourceModule (int index, const Module& sourceModule)
+        virtual void setSourceModule (int index, const Module& sourceModule)
         {
-          Module::setsourceModule (index, sourceModule);
+          Module::setSourceModule (index, sourceModule);
           m_isCached = false;
         }
 

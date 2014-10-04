@@ -5,7 +5,7 @@ function refactor {
 refactor "GetSourceModule" "getSourceModule"
 refactor "GetValue" "getValue"
 refactor "GetSourceModuleCount" "getSourceModuleCount"
-refactor "SetSourceModule" "setsourceModule"
+refactor "SetSourceModule" "setSourceModule"
 refactor "GetUpperBound" "getUpperBound"
 refactor "GetLowerBound" "getLowerBound"
 refactor "SetBounds" "setBounds"

@@ -72,7 +72,7 @@ namespace noise
     /// method.
     ///
     /// An application can pass the control module to the setControlModule()
-    /// method instead of the setsourceModule() method.  This may make the
+    /// method instead of the setSourceModule() method.  This may make the
     /// application code easier to read.
     ///
     /// By default, there is an abrupt transition between the output values
@@ -103,7 +103,7 @@ namespace noise
         /// @returns A reference to the control module.
         ///
         /// @pre A control module has been added to this noise module via a
-        /// call to setsourceModule() or setControlModule().
+        /// call to setSourceModule() or setControlModule().
         ///
         /// @throw noise::ExceptionNoModule See the preconditions for more
         /// information.
@@ -200,7 +200,7 @@ namespace noise
         ///
         /// This method assigns the control module an index value of 2.
         /// Passing the control module to this method produces the same
-        /// results as passing the control module to the setsourceModule()
+        /// results as passing the control module to the setSourceModule()
         /// method while assigning that noise module an index value of 2.
         ///
         /// This control module must exist throughout the lifetime of this

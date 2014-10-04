@@ -86,7 +86,7 @@ namespace noise
       /// @returns A reference to the @a x displacement module.
       ///
       /// @pre This displacement module has been added to this noise module
-      /// via a call to setsourceModule() or setXDisplaceModule().
+      /// via a call to setSourceModule() or setXDisplaceModule().
       ///
       /// @throw noise::ExceptionNoModule See the preconditions for more
       /// information.
@@ -108,7 +108,7 @@ namespace noise
       /// @returns A reference to the @a y displacement module.
       ///
       /// @pre This displacement module has been added to this noise module
-      /// via a call to setsourceModule() or setYDisplaceModule().
+      /// via a call to setSourceModule() or setYDisplaceModule().
       ///
       /// @throw noise::ExceptionNoModule See the preconditions for more
       /// information.
@@ -130,7 +130,7 @@ namespace noise
       /// @returns A reference to the @a z displacement module.
       ///
       /// @pre This displacement module has been added to this noise module
-      /// via a call to setsourceModule() or setZDisplaceModule().
+      /// via a call to setSourceModule() or setZDisplaceModule().
       ///
       /// @throw noise::ExceptionNoModule See the preconditions for more
       /// information.
@@ -188,7 +188,7 @@ namespace noise
       /// This method assigns an index value of 1 to the @a x displacement
       /// module.  Passing this displacement module to this method produces
       /// the same results as passing this displacement module to the
-      /// setsourceModule() method while assigning it an index value of 1.
+      /// setSourceModule() method while assigning it an index value of 1.
       ///
       /// This displacement module must exist throughout the lifetime of this
       /// noise module unless another displacement module replaces it.
@@ -211,7 +211,7 @@ namespace noise
       /// This method assigns an index value of 2 to the @a y displacement
       /// module.  Passing this displacement module to this method produces
       /// the same results as passing this displacement module to the
-      /// setsourceModule() method while assigning it an index value of 2.
+      /// setSourceModule() method while assigning it an index value of 2.
       ///
       /// This displacement module must exist throughout the lifetime of this
       /// noise module unless another displacement module replaces it.
@@ -234,7 +234,7 @@ namespace noise
       /// This method assigns an index value of 3 to the @a z displacement
       /// module.  Passing this displacement module to this method produces
       /// the same results as passing this displacement module to the
-      /// setsourceModule() method while assigning it an index value of 3.
+      /// setSourceModule() method while assigning it an index value of 3.
       ///
       /// This displacement module must exist throughout the lifetime of this
       /// noise module unless another displacement module replaces it.
